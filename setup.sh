@@ -74,7 +74,7 @@ spin() {
 
 # Install gum if missing
 install_gum() {
-    local mgr=$(for m in pacman xbps-install dnf zypper apt; do command -v $m &>/dev/null && { echo ${m%%-*}; break; }; done)
+    local mgr=$(for m in pacman xbps-install dnf zypper apt; do command -v $m &>/dev/null && { echo $m; break; }; done)
 
     case $mgr in
         pacman) sudo pacman -S gum ;;
@@ -103,7 +103,7 @@ check_gum() {
 
 # Install dependencies
 install_deps() {
-    local mgr=$(for m in pacman xbps-install dnf zypper apt; do command -v $m &>/dev/null && { echo ${m%%-*}; break; }; done)
+    local mgr=$(for m in pacman xbps-install dnf zypper apt; do command -v $m &>/dev/null && { echo $m; break; }; done)
     info "Package manager: $mgr"
 
     case $mgr in
